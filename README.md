@@ -9,6 +9,8 @@
 * flask-marshmallow
 * Flask-Alembic
 * PostgreSQL
+* Apispec
+* Swagger-UI
 
 ### Установка:
 
