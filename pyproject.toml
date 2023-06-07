@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "flask-tour-of-heroes"
+version = "0.1.0"
+description = ""
+authors = ["Feoktistov Andrei"]
+readme = "README.md"
+packages = [{include = "tour_of_heroes"}]
+
+[tool.poetry.dependencies]
+python = "^3.8.1"
+Flask = "^2.3.2"
+Flask-SQLAlchemy = "^3.0.3"
+psycopg2-binary = "^2.9.6"
+Flask-RESTful = "^0.3.10"
+flask-marshmallow = "^0.15.0"
+marshmallow-sqlalchemy = "^0.29.0"
+Flask-Alembic = "^2.0.1"
+python-dotenv = "^1.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
