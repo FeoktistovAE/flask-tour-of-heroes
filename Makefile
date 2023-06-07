@@ -1,5 +1,5 @@
 start:
-	poetry run flask --app tour_of_heroes.start --debug run
+	poetry run flask --app tour_of_heroes.start run
 migrations:
 	alembic revision --autogenerate
 migrate:

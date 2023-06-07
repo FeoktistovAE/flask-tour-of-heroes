@@ -16,6 +16,9 @@ flask-marshmallow = "^0.15.0"
 marshmallow-sqlalchemy = "^0.29.0"
 Flask-Alembic = "^2.0.1"
 python-dotenv = "^1.0.0"
+apispec = "^6.3.0"
+flask-swagger-ui = "^4.11.1"
+apispec-webframeworks = "^0.5.2"
 
 
 [tool.poetry.group.dev.dependencies]
