@@ -19,6 +19,7 @@ python-dotenv = "^1.0.0"
 apispec = "^6.3.0"
 flask-swagger-ui = "^4.11.1"
 apispec-webframeworks = "^0.5.2"
+Flask-Cors = "^3.0.10"
 
 
 [tool.poetry.group.dev.dependencies]

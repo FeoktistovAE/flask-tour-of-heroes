@@ -1,0 +1,323 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "description": "Сервис предоставления сведений о героях",
+      "title": "Сервис предоставления сведений о героях",
+      "version": "0.0.1"
+    },
+    "components": {
+      "schemas": {
+        "Hero": {
+          "type": "object",
+          "description": "Герой",
+          "properties": {
+            "id": {
+              "type": "number",
+              "description": "идентификатор"
+            },
+            "name": {
+              "type": "string",
+              "description": "имя героя"
+            },
+            "alter_ego": {
+              "type": "string",
+              "description": "альтер эго героя"
+            },
+            "hero_power": {
+              "type": "string",
+              "description": "суперспособность"
+            }
+          }
+        }
+      }
+    },
+    "servers": [
+      {
+        "url": "http://127.0.0.1:5000",
+        "description": "localhost"
+      }
+    ],
+    "paths": {
+      "/heroes": {
+        "get": {
+          "description": "Получение списка героев",
+          "responses": {
+            "200": {
+              "description": "Список героев",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "description": "Идентификатор"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Имя героя"
+                        },
+                        "alter_ego": {
+                          "type": "string",
+                          "description": "Альтер эго героя"
+                        },
+                        "hero_power": {
+                          "type": "string",
+                          "description": "Имя героя"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/hero/create": {
+        "post": {
+          "requestBody": {
+            "description": "Создание героя",
+            "required": true,
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Изменение имени"
+                    },
+                    "alter_ego": {
+                      "type": "string",
+                      "description": "Изменение альтер эго"
+                    },
+                    "hero_power": {
+                      "type": "string",
+                      "description": "Изменение суперсилы"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Герой",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "string",
+                        "description": "Успешное создание героя"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Герой не найден"
+            }
+          }
+        }
+      },
+      "/hero/{id}/detail": {
+        "get": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Получение героя по id",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Герой",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "description": "Идентификатор"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Имя героя"
+                      },
+                      "alter_ego": {
+                        "type": "string",
+                        "description": "Альтер эго героя"
+                      },
+                      "hero_power": {
+                        "type": "string",
+                        "description": "суперспособность"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Герой не найден"
+            }
+          }
+        }
+      },
+      "/hero/{id}/delete": {
+        "post": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Удаление героя",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Герой",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "string",
+                        "description": "Успешное удаление героя"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Герой не найден"
+            }
+          }
+        }
+      },
+      "/hero/{id}/update": {
+        "post": {
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "Получение героя по id",
+              "required": true,
+              "schema": {
+                "type": "number"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Optional description",
+            "required": true,
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "description": "Изменение имени"
+                    },
+                    "alter_ego": {
+                      "type": "string",
+                      "description": "Изменение альтер эго"
+                    },
+                    "hero_power": {
+                      "type": "string",
+                      "description": "Изменение суперсилы"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Герой",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "success": {
+                        "type": "string",
+                        "description": "Успешное изменение героя"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Герой не найден"
+            }
+          }
+        }
+      },
+      "/hero/{name}/search": {
+        "get": {
+          "parameters": [
+            {
+              "name": "name",
+              "in": "path",
+              "description": "Поиск героя по имени",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Герой",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number",
+                        "description": "Идентификатор"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Имя героя"
+                      },
+                      "alter_ego": {
+                        "type": "string",
+                        "description": "Альтер эго героя"
+                      },
+                      "hero_power": {
+                        "type": "string",
+                        "description": "суперспособность"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Герой не найден"
+            }
+          }
+        }
+      }
+    }
+  }

@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_restful import Api
 from flask_marshmallow import Marshmallow
 from flask_swagger_ui import get_swaggerui_blueprint
+from flask_cors import CORS
 
 from dotenv import load_dotenv
 import os
@@ -11,12 +12,13 @@ import os
 load_dotenv()
 
 SWAGGER_URL = '/api/docs'  # URL for exposing Swagger UI (without trailing '/')
-API_URL = '/swagger'  # Our API url (can of course be a local resource)
+API_URL = '/static/swagger.json'  # Our API url (can of course be a local resource)
 
 app = Flask(__name__)
 api = Api(app)
 db = SQLAlchemy()
 ma = Marshmallow(app)
+CORS(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = ''.join((
     f"{os.getenv('DATABASE')}",

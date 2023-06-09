@@ -58,8 +58,7 @@ class UpdateHero(Resource):
 
 
 class SearchHero(Resource):
-    def get(self):
-        name = request.form['name']
+    def get(self, name):
         hero = db.one_or_404(
             db.select(Hero).filter_by(name=name),
             description=f"No hero named '{name}'."
